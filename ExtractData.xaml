@@ -1,0 +1,218 @@
+<Activity mc:Ignorable="sap sap2010" x:Class="ExtractData_V2" this:ExtractData_V2.in_ToolsURL="https://www.bunnings.com.au/products/tools" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:this="clr-namespace:" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:uix="http://schemas.uipath.com/workflow/activities/uix" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+  <x:Members>
+    <x:Property Name="in_ToolsURL" Type="InArgument(x:String)" />
+    <x:Property Name="io_dt_ExtractedData" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="dt_Products_csv" Type="InOutArgument(sd:DataTable)" />
+  </x:Members>
+  <VisualBasic.Settings>
+    <x:Null />
+  </VisualBasic.Settings>
+  <sap:VirtualizedContainerService.HintSize>1153.3333333333333,2819.3333333333335</sap:VirtualizedContainerService.HintSize>
+  <sap2010:WorkflowViewState.IdRef>ExtractData_V2_1</sap2010:WorkflowViewState.IdRef>
+  <TextExpression.NamespacesForImplementation>
+    <scg:List x:TypeArguments="x:String" Capacity="42">
+      <x:String>System.Activities</x:String>
+      <x:String>System.Activities.Statements</x:String>
+      <x:String>System.Activities.Expressions</x:String>
+      <x:String>System.Activities.Validation</x:String>
+      <x:String>System.Activities.XamlIntegration</x:String>
+      <x:String>Microsoft.VisualBasic</x:String>
+      <x:String>Microsoft.VisualBasic.Activities</x:String>
+      <x:String>System</x:String>
+      <x:String>System.Collections</x:String>
+      <x:String>System.Collections.Generic</x:String>
+      <x:String>System.Data</x:String>
+      <x:String>System.Diagnostics</x:String>
+      <x:String>System.Drawing</x:String>
+      <x:String>System.IO</x:String>
+      <x:String>System.Linq</x:String>
+      <x:String>System.Net.Mail</x:String>
+      <x:String>System.Xml</x:String>
+      <x:String>System.Xml.Linq</x:String>
+      <x:String>UiPath.Core</x:String>
+      <x:String>UiPath.Core.Activities</x:String>
+      <x:String>System.Windows.Markup</x:String>
+      <x:String>GlobalVariablesNamespace</x:String>
+      <x:String>GlobalConstantsNamespace</x:String>
+      <x:String>UiPath.Excel</x:String>
+      <x:String>System.Collections.ObjectModel</x:String>
+      <x:String>UiPath.Excel.Activities.Business</x:String>
+      <x:String>UiPath.Excel.Model</x:String>
+      <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>UiPath.UIAutomationCore.Contracts</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>UiPath.UIAutomationNext.Activities</x:String>
+      <x:String>UiPath.Platform.ObjectLibrary</x:String>
+      <x:String>System.ComponentModel</x:String>
+      <x:String>UiPath.Shared.Activities</x:String>
+      <x:String>UiPath.Shared.Activities.Business</x:String>
+      <x:String>System.Runtime.Serialization</x:String>
+      <x:String>System.Xml.Serialization</x:String>
+      <x:String>UiPath.UIAutomationNext.Models.ExtractData</x:String>
+      <x:String>UiPath.CSV</x:String>
+      <x:String>UiPath.CSV.Activities</x:String>
+      <x:String>UiPath.Excel.Activities</x:String>
+      <x:String>UiPath.DataTableUtilities</x:String>
+    </scg:List>
+  </TextExpression.NamespacesForImplementation>
+  <TextExpression.ReferencesForImplementation>
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="49">
+      <AssemblyReference>System.Activities</AssemblyReference>
+      <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
+      <AssemblyReference>System.Private.CoreLib</AssemblyReference>
+      <AssemblyReference>System.Data</AssemblyReference>
+      <AssemblyReference>System.Data.DataSetExtensions</AssemblyReference>
+      <AssemblyReference>System</AssemblyReference>
+      <AssemblyReference>System.Drawing</AssemblyReference>
+      <AssemblyReference>System.Core</AssemblyReference>
+      <AssemblyReference>System.Xml</AssemblyReference>
+      <AssemblyReference>System.Xml.Linq</AssemblyReference>
+      <AssemblyReference>System.Xaml</AssemblyReference>
+      <AssemblyReference>UiPath.System.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.UiAutomation.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Studio.Constants</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities.Design</AssemblyReference>
+      <AssemblyReference>UiPath.Excel.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Excel</AssemblyReference>
+      <AssemblyReference>System.ObjectModel</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
+      <AssemblyReference>System.Reflection.DispatchProxy</AssemblyReference>
+      <AssemblyReference>System.Reflection.TypeExtensions</AssemblyReference>
+      <AssemblyReference>System.Reflection.Metadata</AssemblyReference>
+      <AssemblyReference>UiPath.UIAutomationNext.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.Platform</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.EventBasedAsync</AssemblyReference>
+      <AssemblyReference>PresentationFramework</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.TypeConverter</AssemblyReference>
+      <AssemblyReference>WindowsBase</AssemblyReference>
+      <AssemblyReference>Microsoft.Win32.Primitives</AssemblyReference>
+      <AssemblyReference>System.ComponentModel</AssemblyReference>
+      <AssemblyReference>System.ComponentModel.Primitives</AssemblyReference>
+      <AssemblyReference>UiPath.Testing.Activities</AssemblyReference>
+      <AssemblyReference>UiPath.OCR.Activities</AssemblyReference>
+      <AssemblyReference>System.Private.ServiceModel</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Formatters</AssemblyReference>
+      <AssemblyReference>System.Private.DataContractSerialization</AssemblyReference>
+      <AssemblyReference>System.Runtime.Serialization.Primitives</AssemblyReference>
+      <AssemblyReference>System.Private.Xml</AssemblyReference>
+      <AssemblyReference>UiPath.Workflow</AssemblyReference>
+      <AssemblyReference>NPOI</AssemblyReference>
+      <AssemblyReference>System.Console</AssemblyReference>
+      <AssemblyReference>System.Configuration.ConfigurationManager</AssemblyReference>
+      <AssemblyReference>System.Security.Permissions</AssemblyReference>
+      <AssemblyReference>System.Memory</AssemblyReference>
+      <AssemblyReference>System.Private.Uri</AssemblyReference>
+      <AssemblyReference>System.Data.SqlClient</AssemblyReference>
+      <AssemblyReference>System.Data.Common</AssemblyReference>
+    </scg:List>
+  </TextExpression.ReferencesForImplementation>
+  <Sequence DisplayName="ExtractData_V2" sap:VirtualizedContainerService.HintSize="1112,2754.6666666666665" sap2010:WorkflowViewState.IdRef="Sequence_1">
+    <sap:WorkflowViewStateService.ViewState>
+      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+      </scg:Dictionary>
+    </sap:WorkflowViewStateService.ViewState>
+    <uix:NCheckState DisplayName="Check App State 'Browse our'" sap:VirtualizedContainerService.HintSize="1050,664" sap2010:WorkflowViewState.IdRef="NCheckState_1" Version="V3">
+      <uix:NCheckState.IfExists>
+        <Sequence DisplayName="Target appears" sap:VirtualizedContainerService.HintSize="450,212" sap2010:WorkflowViewState.IdRef="Sequence_8">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,96" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[&quot;On correct page for extracting tool data!&quot;]" />
+        </Sequence>
+      </uix:NCheckState.IfExists>
+      <uix:NCheckState.IfNotExists>
+        <Sequence DisplayName="Target does not appear" sap:VirtualizedContainerService.HintSize="546,442.6666666666667" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <sap:WorkflowViewStateService.ViewState>
+            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+              <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+            </scg:Dictionary>
+          </sap:WorkflowViewStateService.ViewState>
+          <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: Tools - Hand Tools &amp; Power Tools - Bunnings Australia" sap:VirtualizedContainerService.HintSize="484,326.6666666666667" sap2010:WorkflowViewState.IdRef="NApplicationCard_2" InteractionMode="DebuggerApi" ScopeGuid="07c52284-e2df-4210-82dd-8c073349bbe4" Version="V2">
+            <uix:NApplicationCard.Body>
+              <ActivityAction x:TypeArguments="x:Object">
+                <ActivityAction.Argument>
+                  <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+                </ActivityAction.Argument>
+                <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="450,107.33333333333333" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                  <sap:WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                      <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                  </sap:WorkflowViewStateService.ViewState>
+                </Sequence>
+              </ActivityAction>
+            </uix:NApplicationCard.Body>
+            <uix:NApplicationCard.TargetApp>
+              <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Edge" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsSAAALEgHS3X78AAAAB3RJTUUH5AcVBAwi6jouvQAABF1JREFUWEell0uoVVUYgI9elUBLs7S696qj8p6Lo/KFaGA2rWwgYg1yYIMEIx/Qy4EiOBBFEMLHUNBGXUc6KjQiSANfRXnOVYQShMhE8xWlt+9bZ63jPvvs8/D6wwdnr/0/1l7r//+1TqmTVMv9Mg4GYR0MwSW4CyMRfzvmO3XKoE30MgrRGHpgAeyD3+E+3IBf4Bs4EvG3Y75TR11ttNVH9NqFqBzphR1wDe7BCfgI5sF0eAJ0Lv52zHfqqKuNtvrQV/DbVpISzIfvwK/5FpbDk1CqDLR2UhnoS/bqvgXa6kNf+gzvCyW9hNegCn/DVngGSpVyX9TsLOpqE231oS996ju8a5A0CM5SxT/hPXisRNI2+lgN+tR380rEAffJpXK2q/mKMY4/ruijUu7Xl5PQtzFCTtQVYCyYLO6XS9Yxc30POp4IL8JiWAqvwAsQVq86MCvp6lPfxjCWMeuOFoJLZPY+61hWqrN7k55G7uvL4BbtARPtCtyCO3AdLsAhWAFTINnr2xjGMmaYgDOzZi0bs70p4RwDl20/nIG/wC9JjagV/4A94nUIXwxvg+P72JoeB+xwv4Ezex5egjeB8RkpuMaboJugRfjF62ECWKLHwZiDOrd1/gvb4DBcjc8u4+fwLrjUfnWR825xez6LCWmz+g/WOQH7ty3UJPJ33vBBwVgnXGK/0ombCxUwoHniB80FYw45gYtgH58KrkaRw0flIDwFaftmwAfwEwzDMvgZLqrgSWaijAez2/0qctot5slKKF0o94YkNqmHa/nUD5bgRvga7jqokSea1TAJTMa8U3PCmZ+Golxwm1xSV9NmEyaQF8fA/uDqGHMkO4Fa4yj3b4ljiZvwCTh7a/pVsPZ957G7F9bAElgEZ2E7hIB5iePGqk8gbYFHqs92M5MlTcDad3uSsXjh+BW0s64/hS/BiX0PG6DW6XLiGBhL27AFKQk9z3220x2A3fAO9EHph77JWQfyPngLOgY7YRXMgadhGoQkzItjYCxjhiRMZehlwmfrdLz1CtGsUaKeZ8BMmAx2Scv4Q7ACzoM9JOhmJY4Zq16Glp41anPw5IqqrUW9mNV+9VEwQW9D2jY5CZZ2tGpYvYZGlFqxjSPcejqJOpHNkA2axTzyDCidmV3z6W9oasXpMLJ7mVBBsZNEPW84+S/PsiuuVBYPPA+++mEkbY/jIlEHPPdNpqLgcg6eg6RfeByLJTOaC4l69vqi4OKXvgFJt34hoTs+LFN/QMOVrDrY/kpmsvoe1kJR8ISNymBeYJqvZIoPkUe6lPoOLKl2R7XH+sfwB9QvpU3V5mCkxbW8eSKOg43nFBQFF5fcktNn8bU8SXoJztKl0tj26p+MUKLVzHXN5+Ga/hdQFFw8qPTVfB0vkqQE7pOJ2fav2fBgKDO3y8nmg7vs+gh73k2Tq4sGYOZ2+nNqK/8R0gQ8ui/D6P6c5kVjMBk9AVv9Pfe+5x5/BerYXdsmcE1Kpf8BewH5+gKLl8AAAAAASUVORK5CYII=" InformativeScreenshot="442261ef84aa4dcc3462c9276a32ddc1.jpg" Selector="&lt;html app='msedge.exe' title='Tools - Hand Tools &amp;amp; Power Tools - Bunnings Australia' /&gt;" Url="[in_ToolsURL]" />
+            </uix:NApplicationCard.TargetApp>
+          </uix:NApplicationCard>
+        </Sequence>
+      </uix:NCheckState.IfNotExists>
+      <uix:NCheckState.Target>
+        <uix:TargetAnchorable BrowserURL="https://www.bunnings.com.au/products/tools" DesignTimeRectangle="695, 438, 109, 14" DesignTimeScaleFactor="0.3799999952316284" ElementType="Text" FriendlyName="'Browse our'" FullSelectorArgument="&lt;webctrl tag='H2' /&gt;" FuzzySelectorArgument="&lt;webctrl tag='H2' type='' class='MuiTypography-root sc-fc56148e-1 gbrecq MuiTypography-h3' aaname='Browse our range of tools' check:innerText='Browse our range of tools' /&gt;" Guid="217c81ec-c318-4579-901d-6243a82fc09e" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAHEAAAASCAYAAABsHjEkAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAASxSURBVGhD7VbPS2NXFO4/kL8gS5fZZZldlu7sgCSVkBIQQ1F8iigtYgIdEtrEpEKchX0SW4yY6FRtEtBQCWRw6gyYIaEygRKiMKBCGBAh66/nvPve80VfZlQoOPIWh9yXe+453z3f+XG/6nQ6sOTLFovEJyAWiU9ALBKfgFgk/i/SRmV5Go5BD9xy3WT/PlKG9MwD22wB56b7BhJrKxOwsTKJfWgaiePbypbcUdoF+CmOjuc55I9OzXXuLA8g0Sun4aUMsk3l0DAoWnIPeb+Kfoql60X1xl4dcjwJ6eV9qvMBJPrzVSRG6VBgCRWDoiX3kJ4kfp6Q2/IQEjf3IA1RSw3t0SHVwKAPfVSd3vXXSITGlF5v8wSoaqvIJnx0bgRzRx2cF8OwP5uF/EGz50Mwl0cwQPpkxxkv4+NFFZEpH+lx2x6DtN/uAtTYTWLAxzapHQVjyLQ0W8LHRpRthZF5JwJl8xA23nur2biJ+S/MjQt/jiFh15/f1XWcfNehCUTIdqdVQHCYdXyky37YJ803Wcw31nfTHbqCSfe5GZPfFYxCjERqMVb+n1+BNBkg7CIOwTy3XfK1EoZb8U3YZtKoXBhIPEqj3yP2BtYaul3TmcjijJZxcqUaGE4i3zpDdj5AewH4t6vIRHntgZQVwXQsFJCaFGfdywVEhmk9msbObyqZ202ctDsoLXCQJijoTWRmSWcwhryKodPaUlq5fXwJpQMCzIEZXcWfnyDRPpND7ewM55eqDY1EHTP768ask0j43nwowMvr0DZ+maHfQcJ2cIjIOPshn+uLcNB+f6qKWp6TlO5c1nzxfW7HZGx1CW76dS28wsnFpa7LszLIvn5IIzR109cEEluLcNK+M1RApRhT1vborzqJ2Z+FXuTtqeG+pu20jZPNWWXt3SxeZ0Gn0d1m9ZbxGpkQ/c/Bp2/ntxQ0de3dpOy6eKVXQl8oqwKmLAuMwKVIGKmmCmg/pmPgb42webk3iZ9uWeaYdRIVHU0/he/0/zQsI5CSIi59Pg3vCHWrpuqrR0x+WvgMNjNfHnwdlvR7Xtv+Ed9ousdb8Cudgl+917ZvP2zW6iilxHogu2O4rJZ1FITNhpp1AdEOK0klW22DYchFdT0UwcYF2T6mCi03IStEh/F9jEEQ0L9PkV+hIS9TtqoYtEq0DS+ixK1DqcpV7O+EBbYsZa1ysSRKdyJRq3wj5l4kbiDOlcjYDqjla5W4Ju7jSh3ipLwKKZ5GnsaF5s80JlnCzmd6Ylu/7YuqMvGHqET77BbeqJXopErUCP+3koP87hBzQfoepi6i2jVvp9T7+6O57n7Meob+z33cTwQ0rvi8yBrHc56jh5imnt6/zD37ErWXMbi4j3sog1eqOO+yMQGp2MRHFQPL9Uykap1MQq5Tklw1kAqNqPODzuxShd/18aB3ArKnzlpzEmnNmc7zm+7vCqjJxjNRm1Mcl/geaoZWZhqTf+6ArUVvD3Um9vmmIW3XCUu3L3eIEqalndnA1gsxm/UYqHZ1Ei1po1bZQ6bSUMgXSU3V8d5M93GJRaIubTHbqfqmK9TitLZNjzFz/ccjFolGMTzCbrasxywWiU9ALBK/eOngP8lvr7jIGrQuAAAAAElFTkSuQmCC" InformativeScreenshot="18389270ee2e50fbfbbd4caf9f7c56b7.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Tools - Hand Tools &amp;amp; Power Tools - Bunnings Australia' /&gt;" SearchSteps="FuzzySelector" Version="V1" Visibility="Interactive" />
+      </uix:NCheckState.Target>
+    </uix:NCheckState>
+    <ui:ReadCsvFile DataTable="[dt_Products_csv]" Delimitator="Comma" DisplayName="Read CSV" FilePath="Data\Input\ProductInput.csv" sap:VirtualizedContainerService.HintSize="1050,159.33333333333334" sap2010:WorkflowViewState.IdRef="ReadCsvFile_2" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="1050,96" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Found Input CSV!&quot;]" />
+    <uix:NApplicationCard AttachMode="ByInstance" DisplayName="Use Browser Edge: Tools - Hand Tools &amp; Power Tools - Bunnings Australia" sap:VirtualizedContainerService.HintSize="1050,1604.6666666666667" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" OpenMode="Never" ScopeGuid="a8a6db24-be56-4e1c-b4c8-6d2131ab0620" Version="V2">
+      <uix:NApplicationCard.Body>
+        <ActivityAction x:TypeArguments="x:Object">
+          <ActivityAction.Argument>
+            <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
+          </ActivityAction.Argument>
+          <Sequence DisplayName="Do" sap:VirtualizedContainerService.HintSize="546,1385.3333333333333" sap2010:WorkflowViewState.IdRef="Sequence_6">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+            <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[dt_Products_csv]" DisplayName="For Each Row in Data Table" sap:VirtualizedContainerService.HintSize="484,1269.3333333333333" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+              <ui:ForEachRow.Body>
+                <ActivityAction x:TypeArguments="sd:DataRow">
+                  <ActivityAction.Argument>
+                    <DelegateInArgument x:TypeArguments="sd:DataRow" Name="CurrentRow" />
+                  </ActivityAction.Argument>
+                  <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="450,1150" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                    <Sequence.Variables>
+                      <Variable x:TypeArguments="x:Boolean" Name="PricingExists" />
+                    </Sequence.Variables>
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,96" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Extracting to&quot; + CurrentRow(&quot;ProductURL&quot;).ToString]" />
+                    <uix:NGoToUrl DisplayName="Go To URL" sap:VirtualizedContainerService.HintSize="388,84.66666666666667" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="[CurrentRow(&quot;ProductURL&quot;).ToString]" Version="V3" />
+                    <uix:NClick ClickType="Single" DisplayName="Click 'List'" sap:VirtualizedContainerService.HintSize="388,159.33333333333334" sap2010:WorkflowViewState.IdRef="NClick_1" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="a8a6db24-be56-4e1c-b4c8-6d2131ab0620" Version="V3">
+                      <uix:NClick.Target>
+                        <uix:TargetAnchorable BrowserURL="https://www.bunnings.com.au/products/tools/power-tools" DesignTimeRectangle="1109, 490, 38, 15" DesignTimeScaleFactor="0.3799999952316284" ElementType="Button" FriendlyName="'List'" FullSelectorArgument="&lt;webctrl aaname='List' parentid='searchResultContainer' tag='BUTTON' /&gt;" FuzzySelectorArgument="&lt;webctrl aaname='List' parentid='searchResultContainer' tag='BUTTON' type='' class='listIcon activeViewBtn custom-border' check:innerText='List' /&gt;" Guid="7008efed-2a63-4264-b141-90bfb2d3309b" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAACoAAAATCAYAAADmtp8+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAADPSURBVEhLY/j69ev/oYCHjkP379//f7Diffv2IRwKY/AGhQ86DHLsqEOpiWnu0El33v/fOBHK33D//4UNqPLEYrIcWr942X+p6IT/C/fsw8BtK1ajqMXm0KQT7///f3/y/0wQ/f/+/0lI6nHhAQjRSf83gtwHdGjSxJP/L5yYhKEHGybLoc3LVoJDdNfZ8xgYM0SBjgIBkMPADt38/wKQPQkYmhfOnvz/YrCEKLUwzdMotfDwDtGBwKMOpTZGcSiIM1gx1tbTYMdDxKFf/wMANr0OCZn/gosAAAAASUVORK5CYII=" InformativeScreenshot="5d4bc063d72e14aa1648c34aea1f69de.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Power Tools - Sanders, Drills &amp;amp; Nail Guns - Bunnings Australia' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive" />
+                      </uix:NClick.Target>
+                    </uix:NClick>
+                    <uix:NExtractData AppendResults="False" ContinueOnError="True" DataTable="[io_dt_ExtractedData]" DisplayName="Extract Table Data" ExtractDataSettings="&lt;Table xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance' xmlns:xsd='http://www.w3.org/2001/XMLSchema' Type='Structured'&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Product_Name' ReferenceName='Column0'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='TextColumnFormat' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Product_Price' Sort='Asc' ReferenceName='Column1'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;false&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='NumberColumnFormat' DecimalSeparator='.' ThousandsSeparator=',' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataColumn' Name='Product_Reviews' ReferenceName='Column2'&gt;&#xA;&#x9;&#x9;&lt;IsExtra&gt;false&lt;/IsExtra&gt;&#xA;&#x9;&#x9;&lt;CanExtractSimilar&gt;true&lt;/CanExtractSimilar&gt;&#xA;&#x9;&#x9;&lt;Format xsi:type='NumberColumnFormat' DecimalSeparator='.' ThousandsSeparator=',' /&gt;&#xA;&#x9;&lt;/Column&gt;&#xA;&#x9;&lt;Column xsi:type='DataNextLink' /&gt;&#xA;&lt;/Table&gt;" ExtractMetadata="&lt;extract&gt;&lt;row exact='1'&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='section' /&gt;&lt;/row&gt;&lt;column exact='1' name='Column0' attr='text'&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='section' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='h4' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column1' attr='text'&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='section' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='p' idx='1' /&gt;&lt;/column&gt;&lt;column exact='1' name='Column2' attr='text'&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='section' /&gt;&lt;webctrl tag='a' idx='1' /&gt;&lt;webctrl tag='div' idx='2' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='1' /&gt;&lt;webctrl tag='div' idx='3' /&gt;&lt;webctrl tag='span' idx='1' /&gt;&lt;/column&gt;&lt;/extract&gt;" sap:VirtualizedContainerService.HintSize="388,160" sap2010:WorkflowViewState.IdRef="NExtractData_1" LimitExtractionTo="None" MaximumResults="0" ScopeIdentifier="a8a6db24-be56-4e1c-b4c8-6d2131ab0620" Version="V3">
+                      <uix:NExtractData.NextLink>
+                        <uix:TargetAnchorable BrowserURL="https://www.bunnings.com.au/products/tools/power-tools" DesignTimeRectangle="976, 536, 11, 11" DesignTimeScaleFactor="1.5" ElementType="Icon" FriendlyName="'SVG'" FullSelectorArgument="&lt;webctrl css-selector='body&amp;gt;div&amp;gt;div&amp;gt;main&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;div&amp;gt;nav&amp;gt;ul&amp;gt;li&amp;gt;button&amp;gt;svg' idx='2' parentid='main' tag='svg' /&gt;" FuzzySelectorArgument="&lt;webctrl type='' class='MuiSvgIcon-root MuiPaginationItem-icon' parentid='main' tag='svg' aaname='' /&gt;" Guid="fc7bb289-441c-490a-b48a-8d34450acf5d" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAAAsAAAALCAYAAACprHcmAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAAFiUAABYlAUlSJPAAAAA7SURBVChTY/j69et/YjEdFT9//RqFj4wxFJ+8dv1/0cw5KGIwjNUZ83bsAmN0ccpMJsnN+DCtFH/9DwB89s7ah5PVcgAAAABJRU5ErkJggg==" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Power Tools - Sanders, Drills &amp;amp; Nail Guns - Bunnings Australia' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive" />
+                      </uix:NExtractData.NextLink>
+                      <uix:NExtractData.Target>
+                        <uix:TargetAnchorable DesignTimeRectangle="11, 230, 1812, 4110" DesignTimeScaleFactor="0.3799999952316284" FriendlyName="'Expand breadcrumb...Pro…'" FullSelectorArgument="&lt;webctrl class='container-main' parentid='main' tag='DIV' /&gt;" Guid="ce9b84cb-01e6-4ae0-a39c-c184d685a0af" InformativeScreenshot="728c92e506ac22ca4d30c0e48ee758a4.png" ScopeSelectorArgument="&lt;html app='msedge.exe' title='Power Tools - Sanders, Drills &amp;amp; Nail Guns - Bunnings Australia' /&gt;" SearchSteps="Selector" Version="V1" Visibility="Interactive" />
+                      </uix:NExtractData.Target>
+                    </uix:NExtractData>
+                    <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[io_dt_ExtractedData]" DisplayName="Write Range Workbook" sap:VirtualizedContainerService.HintSize="388,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="[CurrentRow(&quot;ProductRange&quot;).ToString]" WorkbookPath="[&quot;BunningsPricing&quot; + &quot;[&quot; + Date.Now.ToString(&quot;dd-MM-yyyy&quot;) + &quot;]&quot; +&quot;.xlsx&quot;]" />
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="388,96" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[CurrentRow(&quot;ProductURL&quot;).ToString + &quot;successfully written to BunningsPricing.xlsx&quot;]" />
+                    <ui:ClearDataTable DataTable="[io_dt_ExtractedData]" DisplayName="Clear Data Table" sap:VirtualizedContainerService.HintSize="388,82" sap2010:WorkflowViewState.IdRef="ClearDataTable_1" />
+                  </Sequence>
+                </ActivityAction>
+              </ui:ForEachRow.Body>
+            </ui:ForEachRow>
+          </Sequence>
+        </ActivityAction>
+      </uix:NApplicationCard.Body>
+      <uix:NApplicationCard.TargetApp>
+        <uix:TargetApp Area="0, 0, 0, 0" BrowserType="Edge" IconBase64="iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAACXBIWXMAAAsSAAALEgHS3X78AAAAB3RJTUUH5AcVBAwi6jouvQAABF1JREFUWEell0uoVVUYgI9elUBLs7S696qj8p6Lo/KFaGA2rWwgYg1yYIMEIx/Qy4EiOBBFEMLHUNBGXUc6KjQiSANfRXnOVYQShMhE8xWlt+9bZ63jPvvs8/D6wwdnr/0/1l7r//+1TqmTVMv9Mg4GYR0MwSW4CyMRfzvmO3XKoE30MgrRGHpgAeyD3+E+3IBf4Bs4EvG3Y75TR11ttNVH9NqFqBzphR1wDe7BCfgI5sF0eAJ0Lv52zHfqqKuNtvrQV/DbVpISzIfvwK/5FpbDk1CqDLR2UhnoS/bqvgXa6kNf+gzvCyW9hNegCn/DVngGSpVyX9TsLOpqE231oS996ju8a5A0CM5SxT/hPXisRNI2+lgN+tR380rEAffJpXK2q/mKMY4/ruijUu7Xl5PQtzFCTtQVYCyYLO6XS9Yxc30POp4IL8JiWAqvwAsQVq86MCvp6lPfxjCWMeuOFoJLZPY+61hWqrN7k55G7uvL4BbtARPtCtyCO3AdLsAhWAFTINnr2xjGMmaYgDOzZi0bs70p4RwDl20/nIG/wC9JjagV/4A94nUIXwxvg+P72JoeB+xwv4Ezex5egjeB8RkpuMaboJugRfjF62ECWKLHwZiDOrd1/gvb4DBcjc8u4+fwLrjUfnWR825xez6LCWmz+g/WOQH7ty3UJPJ33vBBwVgnXGK/0ombCxUwoHniB80FYw45gYtgH58KrkaRw0flIDwFaftmwAfwEwzDMvgZLqrgSWaijAez2/0qctot5slKKF0o94YkNqmHa/nUD5bgRvga7jqokSea1TAJTMa8U3PCmZ+Golxwm1xSV9NmEyaQF8fA/uDqGHMkO4Fa4yj3b4ljiZvwCTh7a/pVsPZ957G7F9bAElgEZ2E7hIB5iePGqk8gbYFHqs92M5MlTcDad3uSsXjh+BW0s64/hS/BiX0PG6DW6XLiGBhL27AFKQk9z3220x2A3fAO9EHph77JWQfyPngLOgY7YRXMgadhGoQkzItjYCxjhiRMZehlwmfrdLz1CtGsUaKeZ8BMmAx2Scv4Q7ACzoM9JOhmJY4Zq16Glp41anPw5IqqrUW9mNV+9VEwQW9D2jY5CZZ2tGpYvYZGlFqxjSPcejqJOpHNkA2axTzyDCidmV3z6W9oasXpMLJ7mVBBsZNEPW84+S/PsiuuVBYPPA+++mEkbY/jIlEHPPdNpqLgcg6eg6RfeByLJTOaC4l69vqi4OKXvgFJt34hoTs+LFN/QMOVrDrY/kpmsvoe1kJR8ISNymBeYJqvZIoPkUe6lPoOLKl2R7XH+sfwB9QvpU3V5mCkxbW8eSKOg43nFBQFF5fcktNn8bU8SXoJztKl0tj26p+MUKLVzHXN5+Ga/hdQFFw8qPTVfB0vkqQE7pOJ2fav2fBgKDO3y8nmg7vs+gh73k2Tq4sGYOZ2+nNqK/8R0gQ8ui/D6P6c5kVjMBk9AVv9Pfe+5x5/BerYXdsmcE1Kpf8BewH5+gKLl8AAAAAASUVORK5CYII=" InformativeScreenshot="442261ef84aa4dcc3462c9276a32ddc1.jpg" Selector="&lt;html app='msedge.exe' title='Tools - Hand Tools &amp;amp; Power Tools - Bunnings Australia' /&gt;" Url="[in_ToolsURL]" />
+      </uix:NApplicationCard.TargetApp>
+    </uix:NApplicationCard>
+  </Sequence>
+</Activity>
